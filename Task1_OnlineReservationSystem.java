@@ -1,10 +1,10 @@
 import java.util.*;
 public class OnlineReservationSystem {
 static Scanner sc=new Scanner(System.in);
-static HashMap<string,string>users=new HashMap<>();
+static HashMap<String,String>users=new HashMap<>();
 static List<String>reservations = new ArrayList<>();
 public static void main(String args[]){
-users.put("user","pass');
+users.put("user","pass");
 System.out.println("___Welcome to Online Reservation System___");
 System.out.println("Enter Login ID:");
 String id=sc.nextLine();
@@ -17,7 +17,7 @@ System.out.println("Invalid credentials...");
 }
 }
 static boolean authenticate(String id,String pass){
-return users.containKey(id)&&users.get(id).equals(pass);
+return users.containsKey(id)&&users.get(id).equals(pass);
 }
 static void menu(){
 while(true){
@@ -28,8 +28,10 @@ switch(choice){
 case 1-> makeReservation();
 case 2-> cancelReservation();
 case 3-> viewReservations();
-case 4-> System.out.println("Thank You...!");
+case 4-> {
+    System.out.println("Thank You...!");
 return;
+}
 default-> System.out.println("Invalid Option...");
 }
 }
@@ -48,7 +50,7 @@ String date=sc.nextLine();
 String res="PNR"+(reservations.size()+1001)+":"+name+",Train"+train+", "+from+" to "+to+" on "+date;
 reservations.add(res);
 }
-static void cancelReservtaion(){
+static void cancelReservation(){
 System.out.println("Enter PNR number:");
 String pnr=sc.nextLine();
 boolean found=false;
@@ -66,7 +68,7 @@ System.out.println("PNR not found");
 }
 static void viewReservations(){
 if(reservations.isEmpty()){
-System.out.println("No Reservtaions Found...");
+System.out.println("No Reservations Found...");
 }else{
 System.out.println("Reservations:");
 for(String res:reservations){
